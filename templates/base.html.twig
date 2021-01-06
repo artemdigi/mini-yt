@@ -60,6 +60,7 @@
 <!-- mobile top navbar -->
 
 <!-- sidebar -->
+{#
 <nav class="main-nav">
     <ul>
         <li class="">
@@ -128,10 +129,16 @@
     </ul>
 </nav>
 <!-- sidebar -->
+#}
 
+
+{#<div class="row main_container">#}
 {% block content %}
+
 {#    {% include '_partials/mainpage_content.html.twig' %}#}
+
 {% endblock %}
+{#</div>#}
 
 <script src="/js/jquery-3.5.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
