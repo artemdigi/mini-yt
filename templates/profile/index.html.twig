@@ -13,5 +13,13 @@
     {{ form(form) }}
 
     {{ form_errors(form) }}
+
+    <h1>Все мои видео:</h1>
+
+    <ul>
+        {% for video in videos %}
+            <li>{{ video.title }} ({{ video.createdAt|date }})</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

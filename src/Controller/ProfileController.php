@@ -33,12 +33,15 @@ class ProfileController extends AbstractController
 
                 $this->addFlash('success', 'Видео добавлено');
 
+                //$this->eventDispatcher->dispatch($video, 'my_event_name');
+
                 return $this->redirectToRoute('profile');
             }
         }
 
         return $this->render('profile/index.html.twig', [
             'form' => $form->createView(),
+            'videos' => $em->getRepository(Video::class)->findAllByUser($this->getUser()),
         ]);
     }
 }
