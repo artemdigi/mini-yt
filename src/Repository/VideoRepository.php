@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Video;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,6 +20,17 @@ class VideoRepository extends ServiceEntityRepository
         parent::__construct($registry, Video::class);
     }
 
+    public function findAllByUser(User $user): array
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('v.id', 'DESC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Video[] Returns an array of Video objects
     //  */
